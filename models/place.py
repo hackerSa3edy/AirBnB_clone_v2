@@ -7,9 +7,22 @@ from sqlalchemy.orm import relationship
 place_amenity = Table(
     'place_amenity',
     Base.metadata,
-    Column('place_id', String(60), ForeignKey('places.id'), nullable=False, primary_key=True),
-    Column('amenity_id', String(60), ForeignKey('amenities.id'), nullable=False, primary_key=True)
+    Column(
+        'place_id',
+        String(60),
+        ForeignKey('places.id'),
+        nullable=False,
+        primary_key=True
+        ),
+    Column(
+        'amenity_id',
+        String(60),
+        ForeignKey('amenities.id'),
+        nullable=False,
+        primary_key=True
+        )
 )
+
 
 class Place(BaseModel, Base):
     """ A place to stay """
@@ -26,4 +39,9 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     user = relationship("User", back_populates="places")
     city = relationship("City", back_populates="places")
-    amenities = relationship('Amenity', secondary=place_amenity, viewonly=False, back_populates='place_amenities')
+    amenities = relationship(
+        'Amenity',
+        secondary=place_amenity,
+        viewonly=False,
+        back_populates='place_amenities'
+        )
