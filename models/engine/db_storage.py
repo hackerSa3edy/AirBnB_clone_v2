@@ -36,32 +36,37 @@ class DBStorage:
         all_objects = {}
 
         if cls is not None:
-            instances = self.__session.query(cls).all()
-            for instance in instances:
-                all_objects.update({instance.to_dict()['__class__']
-                                    + '.' + instance.id: instance})
+            if self.__session is not None:
+                instances = self.__session.query(cls).all()
+                for instance in instances:
+                    all_objects.update({instance.to_dict()['__class__']
+                                        + '.' + instance.id: instance})
 
         else:
 
             all_cls = [User, Place, State, City, Amenity, Review]
 
             for _cls in all_cls:
-                instances = self.__session.query(_cls).all()
-                for instance in instances:
-                    all_objects.update({instance.to_dict()['__class__']
-                                        + '.' + instance.id: instance})
+                if self.__session is not None:
+                    instances = self.__session.query(_cls).all()
+                    for instance in instances:
+                        all_objects.update({instance.to_dict()['__class__']
+                                            + '.' + instance.id: instance})
 
         return all_objects
 
     def new(self, obj):
-        self.__session.add(obj)
+        if self.__session is not None:
+            self.__session.add(obj)
 
     def save(self):
-        self.__session.commit()
+        if self.__session is not None:
+            self.__session.commit()
 
     def delete(self, obj=None):
         if obj is not None:
-            self.__session.query(obj).delete()
+            if self.__session is not None:
+                self.__session.query(obj).delete()
 
     def reload(self):
         Base.metadata.create_all(self.__engine)
