@@ -70,10 +70,12 @@ class DBStorage:
         return all_objects
 
     def new(self, obj):
+        """Adds new object to the session"""
         if self.__session is not None:
             self.__session.add(obj)
 
     def save(self):
+        """Dump the session to the db"""
         if self.__session is not None:
             self.__session.commit()
 
