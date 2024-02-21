@@ -33,7 +33,7 @@ class DBStorage:
             pool_pre_ping=True)
 
         if HBNB_ENV == 'test':
-            Base.meta.drop_all(self.__engine)
+            Base.metadata.drop_all(self.__engine)
 
         self.reload()
 
