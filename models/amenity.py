@@ -7,6 +7,9 @@ from sqlalchemy.orm import relationship
 
 
 class Amenity(BaseModel, Base):
+    """Amenity class contains its name and relation to
+    its corresbonding place
+    """
     __tablename__ = 'amenities'
     name = Column(String(128), nullable=False)
     place_amenities = relationship(

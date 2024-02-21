@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Console Module """
 import cmd
-import sys
 import re
 from models.base_model import BaseModel
 from models.__init__ import storage
@@ -257,7 +256,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def help_count(self):
-        """ """
+        """Help information for the count command"""
         print("Usage: count <class_name>")
 
     def do_update(self, args):
