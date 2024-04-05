@@ -14,6 +14,7 @@ Functions:
 """
 
 from fabric.api import *
+import os
 
 env.hosts = ['web-01.s1cario.tech', 'web-02.s1cario.tech']
 env.user = 'ubuntu'
@@ -39,6 +40,9 @@ def do_deploy(archive_path):
     Returns:
         bool: True if all operations were successful, False otherwise.
     """
+    if not os.path.isfile(archive_path):
+        return False
+
     status = True
     try:
         put(archive_path, '/tmp/')
