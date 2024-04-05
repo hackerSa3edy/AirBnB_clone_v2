@@ -16,6 +16,8 @@ Functions:
 from fabric.api import *
 
 env.hosts = ['web-01.s1cario.tech', 'web-02.s1cario.tech']
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/school'
 
 
 def do_deploy(archive_path):
