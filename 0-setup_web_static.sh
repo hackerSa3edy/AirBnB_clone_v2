@@ -10,7 +10,7 @@ sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
-sudo echo 'Hello from the other side :)' > /data/web_static/releases/test/index.html
+echo 'Hello from the other side :)' | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link `/data/web_static/current` linked to `/data/web_static/releases/test/`
 sudo ln -f -s /data/web_static/releases/test/ /data/web_static/current
