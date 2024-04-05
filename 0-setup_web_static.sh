@@ -13,7 +13,8 @@ sudo mkdir -p /data/web_static/releases/test/
 echo 'Hello from the other side :)' | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link `/data/web_static/current` linked to `/data/web_static/releases/test/`
-sudo ln -f -s /data/web_static/releases/test/ /data/web_static/current
+sudo rm -f /data/web_static/current
+sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership of the /data/ folder to the ubuntu user AND group, recursively.
 sudo chown -R ubuntu:ubuntu /data/
