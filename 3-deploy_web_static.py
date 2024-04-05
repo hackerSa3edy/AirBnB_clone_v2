@@ -18,6 +18,7 @@ Functions:
 
 from fabric.api import *
 from datetime import datetime
+import os
 
 
 env.hosts = ['web-01.s1cario.tech', 'web-02.s1cario.tech']
@@ -72,6 +73,9 @@ def do_deploy(archive_path):
         bool: True if all operations were successful, False otherwise.
     """
     status = True
+    if not os.path.isfile(archive_path):
+        return False
+
     try:
         put(archive_path, '/tmp/')
 
