@@ -55,9 +55,9 @@ def do_deploy(archive_path):
         run(f'tar -xzf /tmp/{".".join(archive_name)} -C {extraction_path}')
         run(f'rm /tmp/{".".join(archive_name)}')
         run(f'mv -f {extraction_path}/web_static/* {extraction_path}/')
-        run(f'rmdir {extraction_path}/web_static/')
-        run('rm -f /data/web_static/current')
-        run(f'ln -s {extraction_path} /data/web_static/current')
+        run(f'rm -rf {extraction_path}/web_static/')
+        run('rm -rf /data/web_static/current')
+        run(f'ln -fs {extraction_path} /data/web_static/current')
     except Exception:
         status = False
 
