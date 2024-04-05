@@ -44,10 +44,11 @@ def do_deploy(archive_path):
         archive_name = archive_path.split('/')[-1].rsplit('.')
         extraction_path = f'/data/web_static/releases/{archive_name[0]}'
 
+        run(f'rm -rf {extraction_path}')
         run(f'mkdir -p {extraction_path}')
         run(f'tar -xzf /tmp/{".".join(archive_name)} -C {extraction_path}')
         run(f'rm /tmp/{".".join(archive_name)}')
-        run(f'mv {extraction_path}/web_static/* {extraction_path}/')
+        run(f'mv -f {extraction_path}/web_static/* {extraction_path}/')
         run(f'rmdir {extraction_path}/web_static/')
         run('rm -f /data/web_static/current')
         run(f'ln -s {extraction_path} /data/web_static/current')
