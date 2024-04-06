@@ -41,13 +41,7 @@ def do_clean(number=0):
         number = 1
 
     with lcd('versions'):
-        local(
-            f"ls -1tr | head -n -{number} | "
-            "xargs -I :archive rm -rf :archive"
-            )
+        local(f"rm -rf $(ls -1tr | head -n -{number})")
 
     with cd('/data/web_static/releases'):
-        run(
-            f"ls -1tr | head -n -{number} | "
-            "xargs -I :archive rm -rf :archive"
-            )
+        run(f"rm -rf $(ls -tr | head -n -{number})")
