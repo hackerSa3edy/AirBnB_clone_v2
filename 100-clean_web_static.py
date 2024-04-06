@@ -40,12 +40,12 @@ def do_clean(number=0):
 
     with lcd('versions'):
         local(
-            f"ls -t -1 | tail -n +{number + 1} | "
+            f"ls -t -1 | tail -n +{int(number) + 1} | "
             "xargs -I :archive rm -rf :archive"
             )
 
     with cd('/data/web_static/releases'):
         run(
-            f"ls -t -1 | tail -n +{number + 1} | "
+            f"ls -t -1 | tail -n +{int(number) + 1} | "
             "xargs -I :archive rm -rf :archive"
             )
