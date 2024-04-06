@@ -19,6 +19,7 @@ env.hosts = ['web-01.s1cario.tech', 'web-02.s1cario.tech']
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/school'
 
+
 def do_clean(number=0):
     """
     Cleans up old versions of deployed web_static directories.
@@ -41,12 +42,12 @@ def do_clean(number=0):
 
     with lcd('versions'):
         local(
-            f"ls -t -1 | tail -n +{number + 1} | "
+            f"ls -1tr | head -n -{number} | "
             "xargs -I :archive rm -rf :archive"
             )
 
     with cd('/data/web_static/releases'):
         run(
-            f"ls -t -1 | tail -n +{number + 1} | "
+            f"ls -1tr | head -n -{number} | "
             "xargs -I :archive rm -rf :archive"
             )
