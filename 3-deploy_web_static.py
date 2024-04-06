@@ -97,6 +97,7 @@ def do_deploy(archive_path):
 
     return status
 
+
 def deploy():
     """
     Packs the web_static directory and deploys it to the web servers.
