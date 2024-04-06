@@ -15,7 +15,7 @@ Functions:
 
 from fabric.api import *
 
-env.hosts = ['web-01.s1cario.tech', 'web-02.s1cario.tech']
+env.hosts = ['54.162.51.179', '100.25.222.165']
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/school'
 
