@@ -50,7 +50,7 @@ def do_deploy(archive_path):
         archive_name = archive_path.split('/')[-1].rsplit('.')
         extraction_path = f'/data/web_static/releases/{archive_name[0]}'
 
-        run(f'rm -rf {extraction_path}')
+        sudo(f'rm -rf {extraction_path}')
         run(f'mkdir -p {extraction_path}')
         run(f'tar -xzf /tmp/{".".join(archive_name)} -C {extraction_path}')
         run(f'rm /tmp/{".".join(archive_name)}')
@@ -58,6 +58,7 @@ def do_deploy(archive_path):
         run(f'rm -rf {extraction_path}/web_static/')
         run('rm -rf /data/web_static/current')
         run(f'ln -fs {extraction_path} /data/web_static/current')
+        sudo('chown -R ubuntu:ubuntu /data/web_static/')
         print("New version deployed!")
     except Exception:
         status = False
