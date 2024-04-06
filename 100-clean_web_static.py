@@ -41,7 +41,12 @@ def do_clean(number=0):
         number = 1
 
     with lcd('versions'):
-        local(f"rm -rf $(ls -1tr | head -n -{number})")
+        files = local("ls -1tr", capture=True).split('\n')
+        if len(files) != 0:
+            local(f"sudo rm -rf $(ls -tr | head -n -{number})")
 
     with cd('/data/web_static/releases'):
-        run(f"rm -rf $(ls -tr | head -n -{number})")
+        files = run("ls -1tr").split('\n')
+        files = [f for f in files if f.startswith(r'web_static_')]
+        if len(files) != 0:
+            sudo(f"rm -rf $(ls -tr | head -n -{number})")
