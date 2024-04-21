@@ -61,8 +61,9 @@ def c_is_fun(text="") -> str:
     return f"C {text.replace('_', ' ')}"
 
 
+@app.route("/python/", defaults={"text": "is_cool"})
 @app.route("/python/<string:text>", strict_slashes=False)
-def python_route(text="is cool") -> str:
+def python_route(text) -> str:
     """
     A route function that returns a formatted string when the "/python/<text>"
     URL is accessed.
