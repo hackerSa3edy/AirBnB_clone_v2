@@ -44,7 +44,7 @@ def hbnb() -> str:
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slashes=False)
+@app.route("/c/<string:text>", strict_slashes=False)
 def c_is_fun(text="") -> str:
     """
     A route function that returns a formatted string when the "/c/<text>" URL
