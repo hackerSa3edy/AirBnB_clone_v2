@@ -99,7 +99,8 @@ class DBStorage:
         """
         Closes the current database session.
 
-        This method is part of the DBStorage class that manages storage of hbnb models in a database.
+        This method is part of the DBStorage class that manages storage of
+        hbnb models in a database.
 
         Parameters: None
 
