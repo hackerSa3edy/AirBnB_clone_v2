@@ -20,9 +20,22 @@ class State(BaseModel, Base):
     if os.getenv("HBNB_TYPE_STORAGE") != 'db':
         @property
         def cities(self):
+            """
+            Returns a list of City instances with the same state_id as the
+            current State instance.
+
+            This method is part of the State class that represents a state in
+            the hbnb clone.
+
+            Parameters: None
+
+            Returns:
+                list: A list of City instances with the same state_id as the
+                current State instance.
+            """
             cities_to_curr_state = models.storage.all(models.City).values()
             cities_to_curr_state = [
                 city for city in list(cities_to_curr_state)
                 if city.state_id == self.id
-                ]
+            ]
             return cities_to_curr_state
