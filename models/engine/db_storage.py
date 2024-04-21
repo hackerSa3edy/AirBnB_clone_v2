@@ -94,3 +94,15 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)()
+
+    def close(self):
+        """
+        Closes the current database session.
+
+        This method is part of the DBStorage class that manages storage of hbnb models in a database.
+
+        Parameters: None
+
+        Returns: None
+        """
+        self.__session.close()

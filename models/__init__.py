@@ -19,3 +19,14 @@ else:
     storage = FileStorage()
 
 storage.reload()
+
+__all__ = [
+    User,
+    Place,
+    State,
+    City,
+    Amenity,
+    Review,
+    HBNB_TYPE_STORAGE,
+    storage
+    ]
