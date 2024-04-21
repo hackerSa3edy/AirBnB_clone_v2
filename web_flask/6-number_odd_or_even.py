@@ -98,13 +98,17 @@ def is_it_number(n) -> str:
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_temp(n):
     """
-    A route function that renders a template when the "/number_template/<n>" URL is accessed.
+    A route function that renders a template when the "/number_template/<n>"
+    URL is accessed.
 
     Parameters:
         n (int): The integer to be passed to the template.
 
     Returns:
-        render_template: A function that takes in the name of a template file and a variable number of keyword arguments, and returns a string with placeholders in the template file replaced with the appropriate values.
+        render_template: A function that takes in the name of a template
+        file and a variable number of keyword arguments, and returns a
+        string with placeholders in the template file replaced with the
+        appropriate values.
     """
     return render_template("5-number.html", number=n)
 
@@ -112,13 +116,17 @@ def number_temp(n):
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def odd_or_even(n):
     """
-    A route function that renders a template when the "/number_odd_or_even/<n>" URL is accessed.
+    A route function that renders a template when the
+    "/number_odd_or_even/<n>" URL is accessed.
 
     Parameters:
         n (int): The integer to be passed to the template.
 
     Returns:
-        render_template: A function that takes in the name of a template file and a variable number of keyword arguments, and returns a string with placeholders in the template file replaced with the appropriate values.
+        render_template: A function that takes in the name of a template
+        file and a variable number of keyword arguments, and returns
+        a string with placeholders in the template file replaced with
+        the appropriate values.
     """
     return render_template("6-number_odd_or_even.html", number=n)
 
