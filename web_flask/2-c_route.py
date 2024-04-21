@@ -44,8 +44,8 @@ def hbnb() -> str:
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slashes=False)
-def c_is_fun(text="") -> str:
+@app.route("/c/<string:text>", strict_slashes=False)
+def c_is_fun(text) -> str:
     """
     A route function that returns a formatted string when the "/c/<text>" URL
     is accessed.
@@ -58,7 +58,7 @@ def c_is_fun(text="") -> str:
         str: A string in the format of "C <text>", where <text> is replaced by
         the input text with underscores replaced by spaces.
     """
-    return f"C {text.replace("_", " ")}"
+    return f"C {text.replace('_', ' ')}"
 
 
 if __name__ == '__main__':

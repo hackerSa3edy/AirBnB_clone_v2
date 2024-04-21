@@ -58,10 +58,10 @@ def c_is_fun(text="") -> str:
         str: A string in the format of "C <text>", where <text> is replaced by
         the input text with underscores replaced by spaces.
     """
-    return f"C {text.replace("_", " ")}"
+    return f"C {text.replace('_', ' ')}"
 
 
-@app.route("/python/<str:text>", strict_slashes=False)
+@app.route("/python/<string:text>", strict_slashes=False)
 def python_route(text="is cool") -> str:
     """
     A route function that returns a formatted string when the "/python/<text>"
@@ -75,7 +75,7 @@ def python_route(text="is cool") -> str:
         str: A string in the format of "Python <text>", where <text> is
         replaced by the input text with underscores replaced by spaces.
     """
-    return f"Python {text.replace("_", " ")}"
+    return f"Python {text.replace('_', ' ')}"
 
 
 if __name__ == '__main__':
