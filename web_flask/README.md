@@ -1,4 +1,5 @@
 # Project: 0x04. AirBnB clone - Web framework
+![image](./static/images/Screenshot\ 2024-04-22\ 204107.png)
 
 ## Resources
 
