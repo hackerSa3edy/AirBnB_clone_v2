@@ -53,8 +53,14 @@ class DBStorage:
             if self.__session is not None:
                 instances = self.__session.query(cls).all()
                 for instance in instances:
-                    all_objects.update({instance.to_dict()['__class__']
-                                        + '.' + instance.id: instance})
+                    all_objects.update(
+                        {
+                            '.'.join([
+                                instance.to_dict()['__class__'],
+                                instance.id
+                                ]): instance
+                            }
+                        )
 
         else:
 
@@ -64,8 +70,14 @@ class DBStorage:
                 if self.__session is not None:
                     instances = self.__session.query(_cls).all()
                     for instance in instances:
-                        all_objects.update({instance.to_dict()['__class__']
-                                            + '.' + instance.id: instance})
+                        all_objects.update(
+                            {
+                                '.'.join([
+                                    instance.to_dict()['__class__'],
+                                    instance.id
+                                    ]): instance
+                                }
+                            )
 
         return all_objects
 
