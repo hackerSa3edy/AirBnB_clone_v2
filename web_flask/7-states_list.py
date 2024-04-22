@@ -62,7 +62,10 @@ def states_list():
         and a variable number of keyword arguments, and returns a string with
         placeholders in the template file replaced with the appropriate values.
     """
-    states = models.storage.all(models.State).values()
+    states = list(models.storage.all(models.State).values())
+    states = [
+        {'id': state.id, 'name': state.name} for state in states
+    ]
     return render_template(
         "7-states_list.html",
         state_id_name=states
