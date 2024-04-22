@@ -63,13 +63,9 @@ def states_list():
         placeholders in the template file replaced with the appropriate values.
     """
     states = models.storage.all(models.State).values()
-    states = [st.to_dict() for st in states]
     return render_template(
         "7-states_list.html",
-        state_id_name={
-                st.get('id', 'None'): st.get('name', 'None')
-                for st in states
-                }
+        state_id_name=states
         )
 
 
