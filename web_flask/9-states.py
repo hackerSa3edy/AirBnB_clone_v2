@@ -29,6 +29,7 @@ import models
 
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def clear_session(exception):
     """
@@ -45,6 +46,7 @@ def clear_session(exception):
     Returns: None
     """
     models.storage.close()
+
 
 @app.route('/states', strict_slashes=False, defaults={'id': None})
 @app.route('/states/<id>', strict_slashes=False)
@@ -95,6 +97,7 @@ def cities(id):
         "9-states.html",
         data=data,
         )
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
